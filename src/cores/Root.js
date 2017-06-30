@@ -3,12 +3,13 @@ import PropTypes from 'prop-types'
 import { Provider } from 'react-redux'
 import { Router, Route, browserHistory } from 'react-router'
 import App from '../App'
-import '../index.css'
+import Login from '../containers/Login'
 
 const Root = ({ store }) =>
   <Provider store={store}>
     <Router history={browserHistory}>
       <Route path="/" component={App} />
+      <Route path="/login" component={Login} />
     </Router>
   </Provider>
 

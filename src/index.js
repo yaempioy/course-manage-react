@@ -1,8 +1,11 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import App from './App';
-import registerServiceWorker from './registerServiceWorker';
-import './index.css';
+import React from 'react'
+import { createStore } from 'redux'
+import ReactDOM from 'react-dom'
+import Root from './cores/Root'
+import Reducer from './cores/Reducer'
+import registerServiceWorker from './registerServiceWorker'
 
-ReactDOM.render(<App />, document.getElementById('root'));
-registerServiceWorker();
+let store = createStore(Reducer)
+
+ReactDOM.render(<Root store={store} />, document.getElementById('root'))
+registerServiceWorker()

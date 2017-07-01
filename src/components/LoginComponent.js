@@ -3,16 +3,31 @@ import { FormGroup, FormControl, ControlLabel } from 'react-bootstrap'
 import LoaderButton from './LoaderButtonComponent'
 import './LoginComponent.scss'
 
-const LoginComponent = ({}) =>
+const LoginComponent = ({
+  username,
+  password,
+  handleUsernameChange,
+  handlePasswordChange,
+  handleLoginProcess
+}) =>
   <div className="Login">
-    <form>
+    <form onSubmit={handleLoginProcess}>
       <FormGroup controlId="username" bsSize="large">
         <ControlLabel>Email</ControlLabel>
-        <FormControl autoFocus type="email" />
+        <FormControl
+          autoFocus
+          type="text"
+          onChange={handleUsernameChange}
+          value={username}
+        />
       </FormGroup>
       <FormGroup controlId="password" bsSize="large">
         <ControlLabel>Password</ControlLabel>
-        <FormControl type="password" />
+        <FormControl
+          type="password"
+          onChange={handlePasswordChange}
+          value={password}
+        />
       </FormGroup>
       <LoaderButton
         block

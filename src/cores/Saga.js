@@ -1,5 +1,6 @@
 import { fork } from 'redux-saga/effects'
+import * as AuthSagas from '../sagas/Auth.saga'
 
 export default function*() {
-  console.log('Hello Sagas!')
+  yield* [fork(AuthSagas.watchAuthAsync)]
 }

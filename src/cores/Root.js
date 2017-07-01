@@ -5,15 +5,16 @@ import { Router, Route, browserHistory } from 'react-router'
 import App from '../App'
 import Login from '../containers/Login'
 
-const Root = ({ store }) =>
+const Root = ({ history, routes, store }) =>
   <Provider store={store}>
-    <Router history={browserHistory}>
-      <Route path="/" component={App} />
-      <Route path="/login" component={Login} />
+    <Router history={history}>
+      {routes}
     </Router>
   </Provider>
 
 Root.propTypes = {
+  history: PropTypes.object.isRequired,
+  routes: PropTypes.element.isRequired,
   store: PropTypes.object.isRequired
 }
 

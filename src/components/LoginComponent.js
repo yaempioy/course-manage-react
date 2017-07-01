@@ -1,6 +1,7 @@
 import React from 'react'
 import { FormGroup, FormControl, ControlLabel } from 'react-bootstrap'
-import './LoginComponent.scss'
+import LoaderButton from './LoaderButtonComponent'
+import './LoginComponent.css'
 
 const LoginComponent = ({}) =>
   <div className="Login">
@@ -13,6 +14,15 @@ const LoginComponent = ({}) =>
         <ControlLabel>Password</ControlLabel>
         <FormControl type="password" />
       </FormGroup>
+      <LoaderButton
+        block
+        bsSize="large"
+        // disabled={!this.validateForm()}
+        type="submit"
+        // isLoading={this.state.isLoading}
+        text="Login"
+        loadingText="Logging in…"
+      />
     </form>
   </div>
 

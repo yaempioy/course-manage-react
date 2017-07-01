@@ -22,7 +22,6 @@ class Login extends Component {
 }
 
 const mapStateToProps = state => {}
-
 const mapDispatchToProps = { initailAction }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Login)

@@ -1,7 +1,7 @@
 import React from 'react'
 import { FormGroup, FormControl, ControlLabel } from 'react-bootstrap'
 import LoaderButton from './LoaderButtonComponent'
-import './LoginComponent.css'
+import './LoginComponent.scss'
 
 const LoginComponent = ({}) =>
   <div className="Login">

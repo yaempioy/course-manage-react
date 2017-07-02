@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 // import PropTypes from 'prop-types'
-import { Navbar, Nav, NavItem } from 'react-bootstrap'
+import { Navbar, Nav, NavItem, NavDropdown, MenuItem } from 'react-bootstrap'
+import { Link } from 'react-router'
 import './App.scss'
 
 class App extends Component {
@@ -15,12 +16,14 @@ class App extends Component {
             </Navbar.Brand>
           </Navbar.Header>
           <Nav>
-            <NavItem eventKey={1} href='#'>
-              Link
-            </NavItem>
-            <NavItem eventKey={2} href='#'>
-              Link
-            </NavItem>
+            <NavItem >Profile</NavItem>
+          </Nav>
+          <Nav pullRight>
+            <NavDropdown eventKey={3} title='Setting' id='basic-nav-dropdown'>
+              <MenuItem componentClass={Link} href='/profile' to='/profile' eventKey={3.1}>Profile</MenuItem>
+              <MenuItem divider />
+              <MenuItem eventKey={3.2}>Logout</MenuItem>
+            </NavDropdown>
           </Nav>
         </Navbar>
         <div className='contentContainer'>

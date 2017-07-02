@@ -4,6 +4,7 @@ import { loggedIn } from './modules/Auth.module'
 import App from '../containers/App'
 import Home from '../Home'
 import Login from '../containers/Login'
+import Profile from '../containers/Profile'
 
 const requireAuthentication = (nextState, replace) => {
   if (!loggedIn()) {
@@ -19,6 +20,7 @@ export default store =>
     <Route component={App}>
       <Route onEnter={requireAuthentication}>
         <Route path='/' component={Home} />
+        <Route path='/profile' component={Profile} />
       </Route>
     </Route>
     <Route path='/login' component={Login} />

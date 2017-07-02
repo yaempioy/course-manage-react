@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-// import PropTypes from 'prop-types'
+import PropTypes from 'prop-types'
 import { loginProcess } from '../actions/LoginAction'
 import LoginComponent from '../components/LoginComponent'
 
@@ -13,8 +13,15 @@ class Login extends Component {
       password: ''
     }
   }
+  static contextTypes = {
+    router: PropTypes.object.isRequired
+  }
 
-  componentWillReceiveProps (nextProps) {}
+  componentWillReceiveProps (nextProps) {
+    console.log(nextProps)
+    const self = this
+    if (nextProps.authentication) self.context.router.push('/')
+  }
 
   handleUsernameChange = e => {
     this.setState({ username: e.target.value })
@@ -44,7 +51,7 @@ class Login extends Component {
   }
 }
 
-const mapStateToProps = state => ({ user: state.authentication.user })
+const mapStateToProps = state => ({ user: state.authentication.user, authentication: state.authentication })
 const mapDispatchToProps = { loginProcess }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Login)

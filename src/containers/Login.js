@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import PropTypes from 'prop-types'
+// import PropTypes from 'prop-types'
 import { loginProcess } from '../actions/LoginAction'
 import LoginComponent from '../components/LoginComponent'
 
 class Login extends Component {
-  constructor(props) {
+  constructor (props) {
     super(props)
     this.state = {
       isLoading: false,
@@ -13,6 +13,8 @@ class Login extends Component {
       password: ''
     }
   }
+
+  componentWillReceiveProps (nextProps) {}
 
   handleUsernameChange = e => {
     this.setState({ username: e.target.value })
@@ -28,7 +30,7 @@ class Login extends Component {
     this.props.loginProcess(username, password)
   }
 
-  render() {
+  render () {
     const { username, password } = this.state
     return (
       <LoginComponent

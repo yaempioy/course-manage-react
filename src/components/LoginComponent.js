@@ -10,33 +10,33 @@ const LoginComponent = ({
   handlePasswordChange,
   handleLoginProcess
 }) =>
-  <div className="Login">
+  <div className='Login'>
     <form onSubmit={handleLoginProcess}>
-      <FormGroup controlId="username" bsSize="large">
+      <FormGroup controlId='username' bsSize='large'>
         <ControlLabel>Email</ControlLabel>
         <FormControl
           autoFocus
-          type="text"
+          type='text'
           onChange={handleUsernameChange}
           value={username}
         />
       </FormGroup>
-      <FormGroup controlId="password" bsSize="large">
+      <FormGroup controlId='password' bsSize='large'>
         <ControlLabel>Password</ControlLabel>
         <FormControl
-          type="password"
+          type='password'
           onChange={handlePasswordChange}
           value={password}
         />
       </FormGroup>
       <LoaderButton
         block
-        bsSize="large"
+        bsSize='large'
         // disabled={!this.validateForm()}
-        type="submit"
+        type='submit'
         // isLoading={this.state.isLoading}
-        text="Login"
-        loadingText="Logging in…"
+        text='Login'
+        loadingText='Logging in…'
       />
     </form>
   </div>

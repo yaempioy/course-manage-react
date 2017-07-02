@@ -1,19 +1,19 @@
 const localStorageTokenKey = 'AuthToken'
-export function getToken() {
+export function getToken () {
   return localStorage.getItem(localStorageTokenKey)
 }
-function setToken(token) {
+function setToken (token) {
   localStorage.setItem(localStorageTokenKey, token)
 }
-function clearToken() {
+function clearToken () {
   localStorage.removeItem(localStorageTokenKey)
 }
-export function login(token) {
+export function login (token) {
   setToken(token)
 }
-export function logout() {
+export function logout () {
   clearToken()
 }
-export function loggedIn() {
+export function loggedIn () {
   return localStorage.getItem(localStorageTokenKey) !== null
 }

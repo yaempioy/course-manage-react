@@ -4,7 +4,7 @@ import { postAuthentication } from '../cores/models/Auth.model'
 import { login, loggedIn } from '../cores/modules/Auth.module'
 import { ACTION_TYPES } from '../actions/LoginAction'
 // Our worker Saga: will perform the async increment task
-export function* authAsync({ username, password }) {
+export function * authAsync ({ username, password }) {
   let { response } = yield postAuthentication(username, password)
   if (response.token) {
     login(response.token)
@@ -21,6 +21,6 @@ export function* authAsync({ username, password }) {
   }
 }
 // Our watcher Saga: spawn a new addTodoAsync task on each INCREMENT_ASYNC
-export function* watchAuthAsync() {
-  yield* takeEvery(ACTION_TYPES.AUTHENTICATION_REQUEST, authAsync)
+export function * watchAuthAsync () {
+  yield * takeEvery(ACTION_TYPES.AUTHENTICATION_REQUEST, authAsync)
 }

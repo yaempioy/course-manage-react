@@ -1,4 +1,4 @@
-export const getReduxDevTool = function() {
+export const getReduxDevTool = function () {
   if (!window.devToolsExtension) {
     return f => f
   }

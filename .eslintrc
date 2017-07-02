@@ -1,0 +1,22 @@
+{
+  "parser": "babel-eslint",
+  "extends": ["standard", "standard-react"],
+  "plugins": ["react", "flow-vars"],
+  "globals": {
+    "localStorage": false,
+    "__DEBUG__": false,
+    "__API_URI__": false,
+    "__BASE_URI__": false,
+    "__PUSHER_KEY__": false,
+    "__GOOGLE_MAP_API_KEY__": true
+  },
+  "rules": {
+    "flow-vars/define-flow-type": 1,
+    "flow-vars/use-flow-type": 1,
+    "react/jsx-no-bind": 0,
+    "react/prop-types": 0,
+    "react/jsx-boolean-value": 0,
+    "arrow-parens": 0
+  },
+  "ecmaFeatures": { "jsx": true }
+}

@@ -30,7 +30,7 @@ export const api = (additionalUrl, options) => {
     { ...options, headers: { ...headers } }
   )
     .then(responseFormatter(headers.Accept))
-    .then(function(result) {
+    .then(function (result) {
       return {
         response: result[0],
         header: result[1]

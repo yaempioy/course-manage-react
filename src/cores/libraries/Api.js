@@ -8,7 +8,7 @@ export const api = (additionalUrl, options) => {
   let headers = {
     Accept: 'application/json',
     'Content-Type': 'application/json',
-    Authorization: 'JWT ' + getToken(),
+    authorization: 'Bearer ' + getToken(),
     ...options.headers
   }
   let responseFormatter = accept => {
@@ -25,6 +25,7 @@ export const api = (additionalUrl, options) => {
   if (headers['Content-Type'] && options.body) {
     options.body = JSON.stringify(options.body)
   }
+  console.log(headers)
   return fetch(
     serverUrl + additionalUrl + '?' + queryString.stringify(options.params),
     { ...options, headers: { ...headers } }

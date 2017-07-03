@@ -7,3 +7,8 @@ export const postAuthentication = (username, password) => {
     body: { username, password }
   })
 }
+export const getAuthenticationProfile = () => {
+  return api(`${url}/profile`, {
+    method: 'GET'
+  })
+}

@@ -3,9 +3,19 @@ import { connect } from 'react-redux'
 // import PropTypes from 'prop-types'
 import { Navbar, Nav, NavItem, NavDropdown, MenuItem } from 'react-bootstrap'
 import { Link } from 'react-router'
+import {getAuthenticationProfile} from '../actions/Auth.action'
 import './App.scss'
 
 class App extends Component {
+  constructor (props) {
+    super(props)
+    this.state = {}
+  }
+
+  componentWillMount () {
+    this.props.getAuthenticationProfile()
+  }
+
   render () {
     return (
       <div className='coreContainer'>
@@ -34,7 +44,7 @@ class App extends Component {
   }
 }
 
-const mapStateToProps = state => ({})
-const mapDispatchToProps = {}
+const mapStateToProps = state => ({authentication: state.authentication.authentication, user: state.authentication.user})
+const mapDispatchToProps = {getAuthenticationProfile}
 
 export default connect(mapStateToProps, mapDispatchToProps)(App)

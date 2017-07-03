@@ -7,7 +7,7 @@ import Root from './cores/Root'
 import Route from './cores/Route'
 import Store from './cores/Store'
 import registerServiceWorker from './registerServiceWorker'
-import './index.css'
+import './index.scss'
 
 // const BASE_URI = __BASE_URI__
 

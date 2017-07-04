@@ -2,7 +2,7 @@ import React from 'react'
 import { Route, Router } from 'react-router'
 import { loggedIn } from './modules/Auth.module'
 import App from '../containers/App'
-import Home from '../Home'
+import Home from '../containers/Home'
 import Login from '../containers/Login'
 import Profile from '../containers/Profile'
 

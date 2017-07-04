@@ -1,6 +1,7 @@
 import React from 'react'
 import {Row, Col, FormControl} from 'react-bootstrap'
 import {SingleDatePicker} from 'react-dates'
+import TimePicker from 'react-bootstrap-time-picker'
 import moment from 'moment'
 
 export default ({ title, data, handler, type = 'text', options = [], handlerDateFocusedChange, focused }) => <Row className='show-grid'>
@@ -16,12 +17,13 @@ export default ({ title, data, handler, type = 'text', options = [], handlerDate
       </FormControl> : type === 'date' ? <SingleDatePicker
         date={moment(data)}
         focused={focused}
-        onFocusChange={({focused}) => handlerDateFocusedChange(focused)}
-        onDateChange={date => {
-          console.log(date)
-          handler(date)
-        }}
+        onFocusChange={({focused}) => { handlerDateFocusedChange(focused) }}
+        onDateChange={date => { handler(date) }}
         numberOfMonths={1}
+        /> : type === 'time' ? <TimePicker onChange={handler} value={data}
+        /> : type === 'number' ? <FormControl
+          type='number'
+          onChange={handler}
         /> : <FormControl
           id='formControlsText'
           type='text'

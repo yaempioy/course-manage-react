@@ -1,19 +1,26 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-// import PropTypes from 'prop-types'
+import PropTypes from 'prop-types'
 import { Navbar, Nav, NavDropdown, MenuItem, NavItem } from 'react-bootstrap'
 import { Link } from 'react-router'
 import {getAuthenticationProfile} from '../actions/Auth.action'
+import { logout } from '../cores/modules/Auth.module'
 import './App.scss'
 
 class App extends Component {
+  static contextTypes = {
+    router: PropTypes.object.isRequired
+  }
   constructor (props) {
     super(props)
     this.state = {}
   }
-
   componentWillMount () {
     this.props.getAuthenticationProfile()
+  }
+  handleLogout = () => {
+    logout()
+    this.context.router.push('/login')
   }
 
   render () {
@@ -30,7 +37,7 @@ class App extends Component {
             <NavDropdown eventKey={3} title='Setting' id='basic-nav-dropdown'>
               <MenuItem componentClass={Link} href='/profile' to='/profile' eventKey={3.1}>Profile</MenuItem>
               <MenuItem divider />
-              <MenuItem eventKey={3.2}>Logout</MenuItem>
+              <MenuItem eventKey={3.2} onClick={() => this.handleLogout()}>Logout</MenuItem>
             </NavDropdown>
           </Nav>
         </Navbar>

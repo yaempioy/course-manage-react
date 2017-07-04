@@ -29,11 +29,9 @@ class Home extends Component {
   componentWillMount () {
     this.props.fetchCourses()
   }
-
   componentWillReceiveProps (nextProps) {
     if (this.props.course !== nextProps.course) this.props.fetchCourses()
   }
-
   handleFullNameChange = (e) => { this.setState({course: Object.assign(this.state.course, {fullname: e.target.value})}) }
   handleCourseSubjectChange = (e) => { this.setState({course: Object.assign(this.state.course, {subject: e.target.value})}) }
   handleDescriptionChange = (e) => { this.setState({course: Object.assign(this.state.course, {description: e.target.value})}) }
@@ -45,7 +43,6 @@ class Home extends Component {
   }
   handleCourseEndTimeChange = (time) => { this.setState({course: Object.assign(this.state.course, {end: time})}) }
   handleCourseStudenChange = (e) => { this.setState({course: Object.assign(this.state.course, {studens: e.target.value})}) }
-
   submitCrateCourseProcess = () => {
     this.props.createCourseProcess(Object.assign(this.state.course, {date: moment(this.state.course.date).format(), instructor: this.props.user._id}))
     this.setState({creating: !this.state.creating})

@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 // import PropTypes from 'prop-types'
-import { Navbar, Nav, NavDropdown, MenuItem } from 'react-bootstrap'
+import { Navbar, Nav, NavDropdown, MenuItem, NavItem } from 'react-bootstrap'
 import { Link } from 'react-router'
 import {getAuthenticationProfile} from '../actions/Auth.action'
 import './App.scss'
@@ -21,10 +21,11 @@ class App extends Component {
       <div className='coreContainer'>
         <Navbar>
           <Navbar.Header>
-            <Navbar.Brand>
-              <a>Course Management</a>
-            </Navbar.Brand>
+            <Navbar.Brand>Course Management</Navbar.Brand>
           </Navbar.Header>
+          <Nav>
+            <NavItem eventKey={1} componentClass={Link} href='/' to='/'>Home</NavItem>
+          </Nav>
           <Nav pullRight>
             <NavDropdown eventKey={3} title='Setting' id='basic-nav-dropdown'>
               <MenuItem componentClass={Link} href='/profile' to='/profile' eventKey={3.1}>Profile</MenuItem>

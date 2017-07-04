@@ -30,6 +30,10 @@ class Home extends Component {
     this.props.fetchCourses()
   }
 
+  componentWillReceiveProps (nextProps) {
+    if (this.props.course !== nextProps.course) this.props.fetchCourses()
+  }
+
   handleFullNameChange = (e) => { this.setState({course: Object.assign(this.state.course, {fullname: e.target.value})}) }
   handleCourseSubjectChange = (e) => { this.setState({course: Object.assign(this.state.course, {subject: e.target.value})}) }
   handleDescriptionChange = (e) => { this.setState({course: Object.assign(this.state.course, {description: e.target.value})}) }
@@ -122,7 +126,8 @@ class Home extends Component {
 }
 const mapStateToProps = state => ({
   user: state.authentication.user,
-  courses: state.course.courses
+  courses: state.course.courses,
+  course: state.course.course
 })
 const mapDispatchToProps = {createCourseProcess, fetchCourses}
 

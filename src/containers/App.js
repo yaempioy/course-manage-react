@@ -24,6 +24,7 @@ class App extends Component {
   }
 
   render () {
+    const {user} = this.props
     return (
       <div className='coreContainer'>
         <Navbar>
@@ -34,6 +35,7 @@ class App extends Component {
             <NavItem eventKey={1} componentClass={Link} href='/' to='/'>Home</NavItem>
           </Nav>
           <Nav pullRight>
+            <NavItem eventKey={2}>{user.firstname} {user.lastname} (<b>{user.type}</b>)</NavItem>
             <NavDropdown eventKey={3} title='Setting' id='basic-nav-dropdown'>
               <MenuItem componentClass={Link} href='/profile' to='/profile' eventKey={3.1}>Profile</MenuItem>
               <MenuItem divider />

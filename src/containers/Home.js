@@ -4,7 +4,7 @@ import {Grid, Row, Col, Button} from 'react-bootstrap'
 import GridEditRow from '../components/GridEditRow.component'
 import moment from 'moment'
 import { timeFromInt } from 'time-number'
-import {createCourseProcess} from '../actions/Course.action'
+import {createCourseProcess, fetchCourses} from '../actions/Course.action'
 
 const initialCourseStete = {
   subject: '',
@@ -26,6 +26,10 @@ class Home extends Component {
     }
   }
 
+  componentWillMount () {
+    this.props.fetchCourses()
+  }
+
   handleFullNameChange = (e) => { this.setState({course: Object.assign(this.state.course, {fullname: e.target.value})}) }
   handleCourseSubjectChange = (e) => { this.setState({course: Object.assign(this.state.course, {subject: e.target.value})}) }
   handleDescriptionChange = (e) => { this.setState({course: Object.assign(this.state.course, {description: e.target.value})}) }
@@ -42,7 +46,11 @@ class Home extends Component {
     this.props.createCourseProcess(Object.assign(this.state.course, {date: moment(this.state.course.date).format(), instructor: this.props.user._id}))
     this.setState({creating: !this.state.creating})
   }
-
+  renderListCourses = () => {
+    const {courses} = this.props
+    console.log(courses)
+    return (<h1>AA</h1>)
+  }
   renderCreateCourse = () => {
     const {course, courseDateFocused} = this.state
     return (
@@ -72,19 +80,22 @@ class Home extends Component {
       <div className='container'>
         <Grid>
           <Row className='show-grid'>
-            <Col xs={12} md={8}><h4>Course</h4></Col>
+            <Col xs={12} md={8}><h4>Courses</h4></Col>
             <Col xs={6} md={4}><Button onClick={() => this.setState({creating: !creating, course: Object.assign({}, initialCourseStete)})}>Create</Button></Col>
           </Row>
         </Grid>
         <hr />
-        { creating ? this.renderCreateCourse() : null }
+        { creating ? this.renderCreateCourse() : this.renderListCourses() }
         { creating ? <hr /> : null}
         { creating ? this.renderCreateCourseActions() : null }
       </div>
     )
   }
 }
-const mapStateToProps = state => ({ user: state.authentication.user })
-const mapDispatchToProps = {createCourseProcess}
+const mapStateToProps = state => ({
+  user: state.authentication.user,
+  courses: state.course.courses
+})
+const mapDispatchToProps = {createCourseProcess, fetchCourses}
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home)

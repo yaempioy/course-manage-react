@@ -1,7 +1,11 @@
 const initialState = {
-  course: {}
+  course: {},
+  courses: []
 }
 const ACTION_HANDLERS = {
+  FETCH_COURSES_SUCCESS: (state, action) => Object.assign({}, state, {
+    courses: action.courses
+  }),
   CREATE_COURSE_SUCCESS: (state, action) => Object.assign({}, state, {
     course: action.course
   })

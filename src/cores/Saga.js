@@ -8,6 +8,7 @@ export default function * () {
     fork(AuthSagas.watchAuthAsync),
     fork(AuthSagas.watchGetAuthProfileAsync),
     fork(UserSagas.watchUpdateUserAsync),
+    fork(CoureSagas.watchFetchCoursesCreateCourseAsync),
     fork(CoureSagas.watchCreateCourseAsync)
   ]
 }

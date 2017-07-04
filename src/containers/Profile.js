@@ -17,6 +17,7 @@ class Profile extends Component {
   }
   handleFirstnameChange = (e) => { this.setState({firstname: e.target.value}) }
   handleLastnameChange = (e) => { this.setState({lastname: e.target.value}) }
+  handleNicknameChange = (e) => { this.setState({nickname: e.target.value}) }
   handleGenderChange = (e) => { this.setState({gender: e.target.value}) }
   handleBirthdayChange = (date) => { this.setState({birthday: date}) }
   handleBirthdayFocusedChange = (focused) => { this.setState({birthdayFocused: focused}) }
@@ -24,8 +25,8 @@ class Profile extends Component {
   renderEditMode = (title, data, handler, type = 'text', options = [], handleFocusedChange, focused) => (<GridEditRow title={title} data={data} handler={handler} type={type} options={options} handlerDateFocusedChange={handleFocusedChange} focused={focused} />)
   submitEditProfileProcess = () => {
     const {user} = this.props
-    const {firstname, lastname, gender, birthday} = this.state
-    this.props.updateProfile(user._id, {firstname, lastname, gender, birthday: moment(birthday).format()})
+    const {firstname, lastname, nickname, gender, birthday} = this.state
+    this.props.updateProfile(user._id, {firstname, lastname, nickname, gender, birthday: moment(birthday).format()})
     /** Should set after update profile success */
     this.setState({editIng: !this.state.editIng})
   }
@@ -51,6 +52,7 @@ class Profile extends Component {
         </Row>
         { editIng ? this.renderEditMode('First name', user.firstname, this.handleFirstnameChange) : this.renderViewMode('First name', user.firstname) }
         { editIng ? this.renderEditMode('Last name', user.lastname, this.handleLastnameChange) : this.renderViewMode('Last name', user.lastname) }
+        { editIng ? this.renderEditMode('Nickname', user.nickname, this.handleNicknameChange) : this.renderViewMode('Nickname', user.nickname) }
         { editIng ? this.renderEditMode('Gender', user.gender, this.handleGenderChange, 'option', [{value: 'MALE', key: 'M'}, {value: 'WOMEN', key: 'W'}]) : this.renderViewMode('Gender', user.gender) }
         { editIng ? this.renderEditMode('Birthday', birthday, this.handleBirthdayChange, 'date', [], this.handleBirthdayFocusedChange, birthdayFocused) : this.renderViewMode('Birthday', user.birthday, 'date') }
       </Grid>

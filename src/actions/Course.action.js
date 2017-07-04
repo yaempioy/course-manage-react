@@ -5,7 +5,7 @@ export const ACTION_TYPES = {
   CREATE_COURSE_SUCCESS: 'CREATE_COURSE_SUCCESS'
 }
 
-export const fetchCourses = () => ({ type: ACTION_TYPES.FETCH_COURSES_REQUEST })
+export const fetchCourses = (query = {}) => ({ type: ACTION_TYPES.FETCH_COURSES_REQUEST, query })
 export const createCourseProcess = (course = {}) => ({
   type: ACTION_TYPES.CREATE_COURSE_REQUEST, course
 })

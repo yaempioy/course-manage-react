@@ -5,6 +5,7 @@ import GridEditRow from '../components/GridEditRow.component'
 import moment from 'moment'
 import { timeFromInt } from 'time-number'
 import {createCourseProcess, fetchCourses} from '../actions/Course.action'
+import {SingleDatePicker} from 'react-dates'
 
 const initialCourseStete = {
   subject: '',
@@ -20,6 +21,7 @@ class Home extends Component {
   constructor (props) {
     super(props)
     this.state = {
+      // date: moment(),
       creating: false,
       courseDateFocused: false,
       course: initialCourseStete
@@ -27,7 +29,7 @@ class Home extends Component {
   }
 
   componentWillMount () {
-    this.props.fetchCourses()
+    this.props.fetchCourses({})
   }
   componentWillReceiveProps (nextProps) {
     if (this.props.course !== nextProps.course) this.props.fetchCourses()
@@ -43,10 +45,19 @@ class Home extends Component {
   }
   handleCourseEndTimeChange = (time) => { this.setState({course: Object.assign(this.state.course, {end: time})}) }
   handleCourseStudenChange = (e) => { this.setState({course: Object.assign(this.state.course, {studens: e.target.value})}) }
+  dateFilterChange = (date) => {
+    this.setState({ date })
+    if (date) {
+      this.props.fetchCourses({date: `${moment(date).format('YYYY-MM-DD')}T05:00:00.000Z`})
+    } else {
+      this.props.fetchCourses({})
+    }
+  }
   submitCrateCourseProcess = () => {
     this.props.createCourseProcess(Object.assign(this.state.course, {date: moment(this.state.course.date).format(), instructor: this.props.user._id}))
     this.setState({creating: !this.state.creating})
   }
+  submitSearchProcess = () => {}
   renderListCourses = () => {
     const {courses} = this.props
     return (
@@ -112,6 +123,20 @@ class Home extends Component {
         <Grid>
           <Row className='show-grid'>
             <Col xs={12} md={8}><b><h4>Courses</h4></b></Col>
+          </Row>
+        </Grid>
+        <Grid>
+          <Row className='show-grid'>
+            <Col xs={12} md={8}>
+              <Col xs={6} md={4}>
+                <SingleDatePicker
+                  date={this.state.date} // momentPropTypes.momentObj or null
+                  onDateChange={this.dateFilterChange} // PropTypes.func.isRequired
+                  focused={this.state.focused} // PropTypes.bool
+                  onFocusChange={({ focused }) => this.setState({ focused })} // PropTypes.func.isRequired
+                  />
+              </Col>
+            </Col>
             { this.props.user.type === 'Instructor' ? <Col xs={6} md={4} style={{textAlign: 'right'}}><Button onClick={() => this.setState({creating: !creating, course: Object.assign({}, initialCourseStete)})}>Create</Button></Col> : null }
           </Row>
         </Grid>

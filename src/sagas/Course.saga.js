@@ -4,8 +4,8 @@ import { createCourse, getCourses } from '../cores/models/Course.model'
 
 import { ACTION_TYPES } from '../actions/Course.action'
 // Our worker Saga: will perform the async increment task
-export function * getCoursesAsync () {
-  let { response } = yield getCourses()
+export function * getCoursesAsync ({query}) {
+  let { response } = yield getCourses(query)
   if (response.courses) {
     yield put({type: ACTION_TYPES.FETCH_COURSES_SUCCESS, courses: response.courses})
   }

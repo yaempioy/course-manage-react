@@ -1,9 +1,10 @@
 import { api } from '../libraries/Api'
 const url = '/courses'
 
-export const getCourses = () => {
+export const getCourses = (query) => {
   return api(url, {
-    method: 'GET'
+    method: 'GET',
+    params: {...query}
   })
 }
 

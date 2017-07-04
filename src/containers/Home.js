@@ -59,6 +59,7 @@ class Home extends Component {
             <th>Description</th>
             <th>Date</th>
             <th>Time</th>
+            <th>Number of student</th>
             <th>Instructor</th>
           </tr>
         </thead>
@@ -72,6 +73,7 @@ class Home extends Component {
                 <td>{course.description}</td>
                 <td>{moment(course.date).format('DD-MM-YYYY')}</td>
                 <td>{timeFromInt(course.start)} - {timeFromInt(course.end)}</td>
+                <td>{course.studens}</td>
                 <td>{course.instructor.firstname} {course.instructor.lastname}</td>
               </tr>)
             )

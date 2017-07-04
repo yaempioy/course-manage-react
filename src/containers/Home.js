@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import {Grid, Row, Col, Button} from 'react-bootstrap'
+import {Grid, Row, Col, Button, Table} from 'react-bootstrap'
 import GridEditRow from '../components/GridEditRow.component'
 import moment from 'moment'
 import { timeFromInt } from 'time-number'
@@ -48,8 +48,36 @@ class Home extends Component {
   }
   renderListCourses = () => {
     const {courses} = this.props
-    console.log(courses)
-    return (<h1>AA</h1>)
+    return (
+      <Table responsive>
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Course Name</th>
+            <th>Subject</th>
+            <th>Description</th>
+            <th>Date</th>
+            <th>Time</th>
+            <th>Instructor</th>
+          </tr>
+        </thead>
+        <tbody>
+          {
+            courses.map((course, index) => (
+              <tr key={index}>
+                <td>{index + 1}</td>
+                <td>{course.fullname}</td>
+                <td>{course.subject}</td>
+                <td>{course.description}</td>
+                <td>{moment(course.date).format('DD-MM-YYYY')}</td>
+                <td>{timeFromInt(course.start)} - {timeFromInt(course.end)}</td>
+                <td>{course.instructor.firstname} {course.instructor.lastname}</td>
+              </tr>)
+            )
+          }
+        </tbody>
+      </Table>
+    )
   }
   renderCreateCourse = () => {
     const {course, courseDateFocused} = this.state

@@ -25,7 +25,6 @@ export const api = (additionalUrl, options) => {
   if (headers['Content-Type'] && options.body) {
     options.body = JSON.stringify(options.body)
   }
-  console.log(headers)
   return fetch(
     serverUrl + additionalUrl + '?' + queryString.stringify(options.params),
     { ...options, headers: { ...headers } }

@@ -6,7 +6,6 @@ import { ACTION_TYPES } from '../actions/Auth.action'
 // Our worker Saga: will perform the async increment task
 export function * getAuthProfileAsync () {
   let { response } = yield getAuthenticationProfile()
-  console.log(response)
   if (response.user) {
     yield put({
       type: ACTION_TYPES.GET_AUTHENTICATION_PROFILE_SUCCESS,

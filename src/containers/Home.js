@@ -109,7 +109,7 @@ class Home extends Component {
         <Grid>
           <Row className='show-grid'>
             <Col xs={12} md={8}><h4>Courses</h4></Col>
-            <Col xs={6} md={4}><Button onClick={() => this.setState({creating: !creating, course: Object.assign({}, initialCourseStete)})}>Create</Button></Col>
+            <Col xs={6} md={4} style={{textAlign: 'right'}}><Button onClick={() => this.setState({creating: !creating, course: Object.assign({}, initialCourseStete)})}>Create</Button></Col>
           </Row>
         </Grid>
         <hr />

@@ -9,6 +9,9 @@ const initialState = {
   }
 }
 const ACTION_HANDLERS = {
+  UPDATE_PROFILE_SUCCESS: (state, action) => Object.assign({}, state, {
+    user: action.user
+  }),
   GET_AUTHENTICATION_PROFILE_SUCCESS: (state, action) => {
     return Object.assign({}, state, {
       user: action.user,

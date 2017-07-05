@@ -1,6 +1,6 @@
 {
   "parser": "babel-eslint",
-  "extends": ["standard", "standard-react"],
+  "extends": ["standard", "standard-react", "react-app"],
   "plugins": ["react", "flow-vars"],
   "globals": {
     "localStorage": false,
